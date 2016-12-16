@@ -29,7 +29,11 @@ router.get('/:id/swords', (req, res, next) =>  {
   }
 });
 
-
+router.get("/", (req, res, next) =>  {
+  user.getAll(req.body).then(users  =>  {
+    res.json(users)
+  })
+})
 
 function resError(res, statusCode, message) {
   res.status(statusCode);
