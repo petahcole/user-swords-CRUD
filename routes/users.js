@@ -35,8 +35,18 @@ router.get("/", (req, res, next) =>  {
   })
 })
 
+router.delete("/:id", (req, res, next)  =>  {
+  user.makeInactive(req.params.id).then(id => {
+    console.log(id);
+    res.json({id})
+  })
+
+})
+
 function resError(res, statusCode, message) {
   res.status(statusCode);
   res.json({message});
 }
+
+
 module.exports = router;
